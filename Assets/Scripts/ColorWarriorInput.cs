@@ -10,6 +10,7 @@ public static class ColorWarriorInput
 {
     public static SerialPort Serial;
     private static Dictionary<Color, byte> Colors;
+    private static Dictionary<int, byte> ColorID; 
     private static Dictionary<int, int> TouchesID;
     private static Dictionary<int, byte> ToucheColorID;
     private static bool[] Touches;
@@ -21,12 +22,18 @@ public static class ColorWarriorInput
         Touches = new bool[4];
         Bytes = new byte[2];
         Colors = new Dictionary<Color, byte>();
+        ColorID = new Dictionary<int, byte>();
         TouchesID = new Dictionary<int, int>();
         ToucheColorID = new Dictionary<int, byte>();
 
         Colors.Add(Color.red, 0);
         Colors.Add(Color.green, 2);
         Colors.Add(Color.blue, 4);
+
+        ColorID.Add(0, 6);
+        ColorID.Add(1, 0);
+        ColorID.Add(2, 4);
+        ColorID.Add(3, 2);
 
         TouchesID.Add(0, 0);
         TouchesID.Add(6, 1);
@@ -102,6 +109,14 @@ public static class ColorWarriorInput
         Communicate(b);
     }
 
+    public static void SetButtonColor(int id, int color)
+    {
+        byte b = ColorID[color];
+
+        b += ToucheColorID[id];
+        Communicate(b);
+    }
+
     public static void Connect()
     {
         foreach (var portName in SerialPort.GetPortNames())
@@ -118,5 +133,10 @@ public static class ColorWarriorInput
         byte[] B = new[] {b};
 
         Serial.Write(B, 0, 1);
+    }
+
+    public static void Close()
+    {
+        Serial.Close();
     }
 }
