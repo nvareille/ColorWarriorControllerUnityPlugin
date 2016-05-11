@@ -14,13 +14,13 @@ public static class ColorWarriorInput
     private static Dictionary<int, int> TouchesID;
     private static Dictionary<int, byte> ToucheColorID;
     private static bool[] Touches;
-    private static Byte[] Bytes;
+    private static bool[] TouchesStateMachine;
 
     public static void Init()
     {
         Connect();
         Touches = new bool[4];
-        Bytes = new byte[2];
+        TouchesStateMachine = new bool[4];
         Colors = new Dictionary<Color, byte>();
         ColorID = new Dictionary<int, byte>();
         TouchesID = new Dictionary<int, int>();
@@ -89,9 +89,31 @@ public static class ColorWarriorInput
         }
     }
 
+    public static void UpdateState()
+    {
+        int count = 0;
+
+        foreach (var touch in Touches)
+        {
+            TouchesStateMachine[count] = touch;
+            ++count;
+        }
+    }
+
+    public static bool GetButtonDown(int t)
+    {
+        RefreshInputs();
+        UpdateState();
+
+        bool a = Touches[t] && Touches[t] != TouchesStateMachine[t];
+
+        return (a);
+    }
+
     public static bool GetInput(int t)
     {
         RefreshInputs();
+        
         return (Touches[t]);
     }
 
