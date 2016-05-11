@@ -89,24 +89,18 @@ public static class ColorWarriorInput
         }
     }
 
-    public static void UpdateState()
+    public static void UpdateState(int t)
     {
-        int count = 0;
-
-        foreach (var touch in Touches)
-        {
-            TouchesStateMachine[count] = touch;
-            ++count;
-        }
+        TouchesStateMachine[t] = Touches[t];
     }
 
     public static bool GetButtonDown(int t)
     {
         RefreshInputs();
-        UpdateState();
-
+        
         bool a = Touches[t] && Touches[t] != TouchesStateMachine[t];
 
+        UpdateState(t);
         return (a);
     }
 
