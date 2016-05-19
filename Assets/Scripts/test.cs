@@ -1,9 +1,30 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.UI;
+
 
 public class test : MonoBehaviour
 {
+    public List<Image> images;
+
+    public static void LitPressedButton(List<Image> img)
+    {
+        int count = 0;
+
+        while (count < 4)
+        {
+            if (ColorWarriorInput.GetInput(count))
+                img[count].color = Color.yellow;
+            else
+            {
+                img[count].color = Color.white;
+            }
+            ++count;
+        }
+    }
+
 
 	// Use this for initialization
 	void Start () {
@@ -27,6 +48,9 @@ public class test : MonoBehaviour
         Debug.Log("2: " + ColorWarriorInput.GetInput(2));
         Debug.Log("3: " + ColorWarriorInput.GetInput(3));
         //Debug.Log("up");
+
+        LitPressedButton(images);
+        
 
 	    if (Input.GetButton("Jump"))
 	    {

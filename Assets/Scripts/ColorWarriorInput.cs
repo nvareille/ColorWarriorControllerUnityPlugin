@@ -35,10 +35,10 @@ public static class ColorWarriorInput
         ColorID.Add(2, 4);
         ColorID.Add(3, 2);
 
-        TouchesID.Add(0, 0);
-        TouchesID.Add(6, 1);
-        TouchesID.Add(4, 2);
-        TouchesID.Add(2, 3);
+        TouchesID.Add(0, 3);
+        TouchesID.Add(6, 0);
+        TouchesID.Add(4, 1);
+        TouchesID.Add(2, 2);
 
         ToucheColorID.Add(0, 0);
         ToucheColorID.Add(1, 48);
