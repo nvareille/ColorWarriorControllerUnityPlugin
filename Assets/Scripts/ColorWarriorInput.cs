@@ -40,10 +40,10 @@ public static class ColorWarriorInput
         TouchesID.Add(4, 1);
         TouchesID.Add(2, 2);
 
-        ToucheColorID.Add(0, 0);
-        ToucheColorID.Add(1, 48);
-        ToucheColorID.Add(2, 32);
-        ToucheColorID.Add(3, 16);
+        ToucheColorID.Add(0, 48);
+        ToucheColorID.Add(1, 32);
+        ToucheColorID.Add(2, 16);
+        ToucheColorID.Add(3, 0);
 
         Serial.ReadTimeout = 5;
     }

@@ -37,7 +37,6 @@ public class test : MonoBehaviour
         ColorWarriorInput.SetButtonColor(1, Color.green);
         ColorWarriorInput.SetButtonColor(2, Color.blue);
         ColorWarriorInput.SetButtonColor(3, Color.black);
-        
 	}
 	
 	// Update is called once per frame
